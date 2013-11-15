@@ -44,3 +44,13 @@ default[:kibana][:apache][:enable_default_site] = true
 
 # Rsyslog attributes
 default[:rsyslog][:logstash_server] = ''
+
+# process monitoring
+default[:logging][:server][:logstash_processes] = [
+]
+
+default[:logging][:server][:es_processes] = [
+]
+
+default[:logging][:server][:kibana_processes] = [
+]

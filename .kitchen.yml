@@ -15,6 +15,8 @@ suites:
 - name: default
   run_list:
     - recipe[ktc-testing]
+    - recipe[sensu::default]
+    - recipe[collectd::client]
     - recipe[ktc-logging::server_logstash]
     - recipe[ktc-logging::server_es]
   attributes: 
@@ -24,6 +26,23 @@ suites:
       recipes_server_es: 
         - elasticsearch::default
         - logstash::index_cleaner
+      server: 
+        logstash_processes:
+          - { 
+              name: "java", 
+              shortname =>  "java" 
+            }
+        es_processes:
+          - { 
+              name: "java", 
+              shortname: "java" 
+            }
+          - { 
+              name:  "apache2", 
+              shortname: "apache2" 
+            }
+        kibana_processes: 
+          - {}
     logstash:
       elasticsearch_cluster: 'es-cluster-test'
     elasticsearch:

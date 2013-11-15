@@ -30,3 +30,16 @@ default[:elasticsearch][:cluster][:name] = 'es-cluster-mkd-stag'
 
 # TODO: This endpoint should be handled with Services library in ktc-rsyslog.
 default[:rsyslog][:logstash_server] = 'logstash01-vm.mkd-stag'
+
+# process monitoring
+default[:logging][:server][:logstash_processes] = [
+  { "name" =>  "java", "shortname" =>  "java" }
+]
+
+default[:logging][:server][:es_processes] = [
+  { "name" =>  "java", "shortname" =>  "java" },
+  { "name" =>  "apache2", "shortname" =>  "apache2" }
+]
+
+default[:logging][:server][:kibana_processes] = [
+]
